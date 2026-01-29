@@ -23,7 +23,7 @@ accountCity = "Bengaluru";
 
 // Logging
 console.log(accountName);
-console.table([accountName, accountEmail, accountPassword, accountCity]);
+console.table([accountName, accountEmail, accountPassword, accountCity, accountState]);
 // It displays data in a tabular format.
 
 /* Notes:
