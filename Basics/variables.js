@@ -1,10 +1,11 @@
 
 
 // JS Variables Notes 1/29/2026
-"use strict";
-// Use "use strict" to avoid accidental globals
+"use strict"; ///treatss all code as newer version of JS
 //e.g:
-// anything = 5; // This will throw an error in "use strict"; mode other than that it will create a global variable.
+// anything = 5; 
+// // This will throw an error in "use strict"; mode 
+// if "use strict"; is not used then it will create a global variable.
 
 // Constants: never change
 const accountPassword = "mypassword123";
