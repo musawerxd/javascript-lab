@@ -1,6 +1,6 @@
 
 
-// JS Operations Notes 1/30/2026
+// JS DataType Notes 1/30/2026
 
 // Primitive Data Types
 let num = 42; // Number
