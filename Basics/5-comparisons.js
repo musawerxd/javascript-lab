@@ -1,6 +1,6 @@
 
 
-// JS Operations Notes 1/30/2026
+// JS Comparisons Notes 1/30/2026
 
 // Simple Comparisons
 console.log("2 > 1 =", 2 > 1);          // true
