@@ -321,5 +321,121 @@ console.log(`str01 == str02 : ${str01 == str02}`); // true
 // However, with the loose equality operator (==), JavaScript performs type coercion, converting the String object to a primitive string before comparison, resulting in true.
 
 
+
+/// +++++++++++++++++++++++++++++++++++++++++++++++++ 16 ++++++++++++++++++++++++++++++++++++++++++++++
+
+//  Create a date object for today and:
+//     - convert it to number using Number(date)
+//     - compare it with Date.now() using == and ===
+//     Explain why one works and the other doesn’t.
+
+
+console.log("\n Solution 16: ")
+let today = new Date();
+console.log(`Number(today) : ${Number(today)}`); // milliseconds since epoch
+console.log(`Date.now() : ${Date.now()}`); // milliseconds since epoch
+console.log(`Number(today) == Date.now() : ${Number(today) == Date.now()}`); // true
+console.log(`Number(today) === Date.now() : ${Number(today) === Date.now()}`); // false
+// Explanation:
+// Number(today) converts the Date object to the number of milliseconds since January 1, 1970.
+// Date.now() returns the current timestamp in milliseconds since January 1, 1970.
+// The == operator performs type coercion, so it compares the numeric values and returns true.
+// The === operator checks for both value and type without coercion, and since Number(today) is a number and Date.now() is also a number, but they are not the same exact moment in time (even if very close), it returns false.
+
+
+/// ++++++++++++++++++++++++++++++++++++++++++++++++ 17 ++++++++++++++++++++++++++++++++++++++++++++++
+
+//  Take this string "2023-01-01" and:
+//     - convert to Date
+//     - then to Number
+//     - then to Boolean
+//     Explain each step like undefined → number → string → boolean conversion flow.
+
+
+console.log(`\n Solution 17: `)
+
+let timeStr = "2023-01-01";
+let dateObj = new Date(timeStr);
+console.log(`Date object from "${timeStr}": ${dateObj}`);
+
+let dateNum = Number(dateObj);
+console.log(`Number value of date: ${dateNum}`);
+
+let dateBool = Boolean(dateObj);
+console.log(`Boolean value of date: ${dateBool}`);
+// Explanation:
+// Converting the string "2023-01-01" to a Date object creates a date representation of January 1, 2023.
+// Converting the Date object to a number gives the timestamp in milliseconds since January 1, 1970.
+// Converting the Date object to a boolean results in true because Date objects are truthy values in JavaScript.
+
+
+
+
+/// ++++++++++++++++++++++++++++++++++++++++++++++++ 18 ++++++++++++++++++++++++++++++++++++++++++++++
+
+//  Create two dates with same value:
+//     let d1 = new Date("2024-05-10");
+//     let d2 = new Date("2024-05-10");
+//     Compare using ==, ===, and getTime()
+//     Relate this behavior to array/object comparison trap.
+
+console.log(`\nSolution 18: `)
+let d1 = new Date("2024-05-10");
+let d2 = new Date("2024-05-10");
+console.log(`d1 == d2 : ${d1 == d2}`); // false
+console.log(`d1 === d2 : ${d1 === d2}`); // false
+console.log(`d1.getTime() == d2.getTime() : ${d1.getTime() == d2.getTime()}`); // true
+console.log(`d1.getTime() === d2.getTime() : ${d1.getTime() === d2.getTime()}`); // true
+// Explanation:
+// d1 and d2 are two different Date objects in memory, so both == and === comparisons return false. because they reference different instances.(heap reference concept)
+// However, getTime() returns the numeric timestamp for both dates, which are equal, so both comparisons return true.
+// This behavior is similar to array/object comparison, where two different instances with the same content are not equal unless their values are compared directly.
+
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++ 19 ++++++++++++++++++++++++++++++++++++++++++++++
+
+//  Use:
+//     console.log("5" + new Date().getDate());
+//     console.log("5" - new Date().getDate());
+//     Explain why one concatenates and other subtracts (type coercion war).
+
+console.log(`\n Solution 19: `)
+console.log(`"5" + new Date().getDate() : "${"5" + new Date().getDate()}`); // concatenation results in a string
+console.log(`"5" - new Date().getDate() : ${"5" - new Date().getDate()}`); // subtraction results in a number
+//Explanation:
+// In the first case, the + operator with a string operand results in string concatenation.
+// In the second case, the - operator converts the string "5" to a number for arithmetic subtraction.
+// Thus, the type coercion behavior differs based on the operator used.
+
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++++ 20 ++++++++++++++++++++++++++++++++++++++++++++++
+
+//  Create a function that generates random date between two dates using:
+//     - Math.random()
+//     - timestamps
+//     Explain why timestamps are needed instead of direct Date objects.
+console.log(`\n Solution 20: `)
+function getRandomDate(start, end) {
+    let startTimestamp = start.getTime();
+    console.log(`startTimestamp : ${startTimestamp}`);
+    let endTimestamp = end.getTime();
+    console.log(`endTimestamp : ${endTimestamp}`);
+    let randomTimestamp = startTimestamp + Math.random() * (endTimestamp - startTimestamp);
+    return new Date(randomTimestamp);
+}
+let randomDate = getRandomDate(new Date("2023-01-01"), new Date("2023-12-31"));
+console.log(`Random date between 2023-01-01 and 2023-12-31: ${randomDate}`);
+// Explanation:
+// Timestamps (milliseconds since epoch) are needed because Math.random() generates a floating-point number between 0 and 1.
+// By converting Date objects to timestamps, we can easily calculate a random timestamp within the desired range.
+// Directly using Date objects would not allow for straightforward arithmetic operations needed to generate a random date.
+/// Timestamps provide a numeric representation that can be manipulated mathematically.
+// so Whenever we need to do any arithmetic operations on dates, we convert them to timestamps first.
+
+
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++ End ++++++++++++++++++++++++++++++++++++++++++++++
 
