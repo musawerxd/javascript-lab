@@ -117,6 +117,15 @@ console.log("joinArr1 with .join(\"-\") : ", joinArr1.join("-")); // removes com
 console.log("joinArr1 with .join(\"-\") : ", joinArr1.join("-")); // removes comma and add dash
 //join() internally calls .toString() on each element, and return string as whole from array 
 
+let arrF = [1, 2, 3, [4, 5, 6], 8, [11, 213, 3]] // arrays within an array
+console.log("arrF = ", arrF);
+// to to make this as one array we use method flat()
+let arrFlat = arrF.flat(Infinity) // we need to provide depth to this method as i provided infinity here 
+console.log("arrFlat = ", arrFlat);
+
+console.log("Array.isArray(\"Musawer\") : ", Array.isArray("Musawer")) // false 
+console.log("Array.isArray([1, 2, 3, 4, 5]) : ", Array.isArray([1, 2, 3, 4, 5])) // true
+// this method tells if the data is Array or not 
 
 
 
