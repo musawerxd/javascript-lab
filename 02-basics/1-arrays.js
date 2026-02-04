@@ -127,6 +127,15 @@ console.log("Array.isArray(\"Musawer\") : ", Array.isArray("Musawer")) // false
 console.log("Array.isArray([1, 2, 3, 4, 5]) : ", Array.isArray([1, 2, 3, 4, 5])) // true
 // this method tells if the data is Array or not 
 
+console.log("Array.from(\"Musawer\") : ", Array.from("Musawer")) // create array from given data 
+
+// one interesting thing for interviews here is that: 
+console.log("Array.from(name: \"Musawer\") : ", Array.from({ name: "Musawer" })) // cannot convert objects into arrays, if not specified how to convert them, it returns empty object
+
+// will cover this in next notes 
+
+
+
 
 
 
