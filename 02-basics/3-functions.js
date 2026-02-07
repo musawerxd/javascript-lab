@@ -2,7 +2,7 @@
 
 
 
-// JS Object Notes 07/02/2026
+// JS Functionss Notes 07/02/2026
 
 //1. A function = reusable block of code
 console.log(`\n 1. A function = reusable block of code : `)
