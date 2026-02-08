@@ -8,6 +8,8 @@
 // Result is true or false (sometimes actual value)
 
 
+
+
 // 1. AND  (&&)
 console.log(`\n 1. AND  (&&)`)
 // All conditions must be true
@@ -21,6 +23,10 @@ let hasID = true;
 if (age >= 18 && hasID) {
     console.log("Allowed to enter");
 }
+
+
+
+
 
 
 // 2. OR  (||)
@@ -39,6 +45,11 @@ if (isAdmin || isOwner) {
 }
 
 
+
+
+
+
+
 // 3. NOT  (!)
 console.log(`\n 3. NOT  (!)`)
 
@@ -49,6 +60,9 @@ let logged = false;
 if (!logged) {
     console.log("Please login");
 }
+
+
+
 
 
 // 4. Real Examples
@@ -62,6 +76,9 @@ let isPaid = true;
 let isVerified = true;
 
 isPaid && isVerified && console.log("Premium Access");
+
+
+
 
 
 
