@@ -1,56 +1,19 @@
+// 1. Simple if
+// Runs block only when condition is true
 
-
-
-
-// JS If else if Notes 08/02/2026
-
-
-
-
-
-// 1. Comparison Operators  (Most Basic Part)
-console.log(`\n 1. Comparison Operators  (Most Basic Part)`)
-
-// >  greater than
-// <  less than
-// >= greater than or equal
-// <= less than or equal
-// == loose equality (type conversion allowed)
-// === strict equality (no type conversion)
-// != not equal (loose)
-// !== not equal (strict)
-
-let a = 10;
-let b = 20;
-
-console.log(a > b);   // false
-console.log(a < b);   // true
-console.log(a >= 10); // true
-console.log(b <= 15); // false
-
-
-
-
-
-
-
-// 2. if statement
-console.log(`\n 2. if statement`)
-let age = 18;
+let age = 20;
 
 if (age >= 18) {
-    console.log("You can drive");
+    console.log("You are adult");
 }
 
-// Condition must be truthy to enter block
+// If condition is false -> nothing happens
 
 
+// 2. if – else
+// Two possible execution paths
 
-
-// 3. if – else
-console.log(`\n 3. if - else`)
-
-let marks = 40;
+let marks = 45;
 
 if (marks >= 50) {
     console.log("Pass");
@@ -58,69 +21,58 @@ if (marks >= 50) {
     console.log("Fail");
 }
 
+// Exactly ONE block will run
 
 
+// 3. if – else if – else
+// Multiple conditions checked in order
 
-
-
-// 4. if – else if – else
-console.log(`\n 4. if - else if - else`)
-
-let score = 75;
+let score = 78;
 
 if (score >= 90) {
     console.log("Grade A");
-} else if (score >= 70) {
+}
+else if (score >= 80) {
     console.log("Grade B");
-} else {
+}
+else if (score >= 70) {
     console.log("Grade C");
 }
-
-
-
-
-
-// 5. Truthy & Falsy (very important)
-console.log(`\n 5. Truthy & Falsy (very important)`)
-
-// Falsy values:
-// false, 0, "", null, undefined, NaN
-
-if ("") {
-    console.log("will not run");
+else if (score >= 60) {
+    console.log("Grade D");
+}
+else {
+    console.log("Fail");
 }
 
-if ("hello") {
-    console.log("will run because string is truthy");
-}
+// Rules:
+// - Conditions checked top to bottom
+// - First true block runs
+// - Rest are ignored
+// - else is optional fallback
 
 
+// 4. Without braces (not recommended)
+
+if (age > 18)
+    console.log("Allowed");
+
+// Use braces when more than one line
 
 
+// 5. Common mistakes
 
-// 6. Logical Operators
-console.log(`\n 6. Logical Operators`)
+// Mistake: assignment instead of comparison
+// if (age = 18) { }   // WRONG
 
-// AND (&&)
-if (age > 18 && marks > 50) {
-    console.log("Eligible");
-}
-
-// OR (||)
-if (age > 18 || marks > 50) {
-    console.log("Partially Eligible");
-}
-
-// NOT (!)
-let isLogged = false;
-if (!isLogged) {
-    console.log("Please login");
-}
+// Correct
+if (age === 18) { }
 
 
+// 6. Professional Notes
 
-
-
-
-
-
+// - Use if for single condition
+// - Use if–else for two paths
+// - Use if–else if for multiple ranges
+// - Prefer === for comparison
+// - Avoid deep nested ifs

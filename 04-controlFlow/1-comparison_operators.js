@@ -1,3 +1,12 @@
+
+
+
+
+// JS Comparison Operator notes 02/08/2026
+
+
+
+
 // Comparison operators compare two values and return true or false
 
 // 1. Basic Numeric Comparisons
