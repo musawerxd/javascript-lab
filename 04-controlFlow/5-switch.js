@@ -73,6 +73,9 @@ switch (day2) {
     default:
         console.log("Invalid input!");
 }
+//except defualt , everything will be executed
+
+
 
 
 
