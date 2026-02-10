@@ -80,12 +80,23 @@ console.log(a ?? b ?? c); // Hello
 
 
 
+// 6. with 3 values
+console.log(`\n 6. with 3 values`)
+
+let x = null;
+let y = 8;
+let z = 10;
+
+console.log(x ?? y ?? z); // 8 , becasue in these cases, first value to be recieved will be returned 
 
 
 
 
-// 6. Important Rules
-console.log(`\n 6. Important Rules`)
+
+
+
+// 7. Important Rules
+console.log(`\n 7. Important Rules`)
 
 // - ?? ignores: 0, "", false, NaN
 // - works only for: null and undefined
