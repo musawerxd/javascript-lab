@@ -21,6 +21,9 @@ The DOM is a JavaScript representation of HTML.
 
 
 
+
+
+
 <!-- ================= 1. How Browser Converts HTML to DOM ================= -->
 
 <!-- Example HTML -->
@@ -36,10 +39,6 @@ The DOM is a JavaScript representation of HTML.
 </body>
 
 </html>
-
-
-
-
 <!--
 Browser builds this tree internally:
 
@@ -48,13 +47,16 @@ Document
      ├── head
      │    └── title
      └── body
-          ├── h1
-          └── p
+          └── div
+
 
 This tree structure is the DOM.
 
 Every tag becomes a NODE.
 -->
+
+
+
 
 
 
@@ -85,6 +87,9 @@ Example:
 
 
 
+
+
+
 <!-- =========================== 3. Why DOM Exists =========================== -->
 
 <!--
@@ -98,6 +103,9 @@ DOM allows JavaScript to:
 
 Without DOM → JavaScript cannot interact with page content.
 -->
+
+
+
 
 
 
@@ -123,6 +131,8 @@ document is the root object of DOM.
 
 Everything starts from document.
 -->
+
+
 
 
 
@@ -159,6 +169,9 @@ querySelectorAll → returns NodeList
 
 
 
+
+
+
 <!-- ================= 6. Modifying Content ================= -->
 
 <script>
@@ -177,6 +190,8 @@ querySelectorAll → returns NodeList
 textContent → safer, only text
 innerHTML → parses HTML
 -->
+
+
 
 
 
@@ -218,6 +233,8 @@ appendChild → adds to DOM tree
 
 
 
+
+
 <!-- ================= 9. DOM is Live & Dynamic ================= -->
 
 <!--
@@ -228,6 +245,8 @@ If you modify DOM:
 
 This is how interactive websites work.
 -->
+
+
 
 
 
@@ -245,6 +264,8 @@ This is how interactive websites work.
 - DOM manipulation is slower than pure JS operations.
 - Always wait for DOM to load before accessing elements.
 -->
+
+
 
 
 
