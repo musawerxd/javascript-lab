@@ -1,0 +1,281 @@
+<!-- JS DOM introduction notes 02/22/2026 -->
+
+
+
+<!--
+DOM = Document Object Model
+
+It is a programming interface for HTML and XML documents.
+
+When a browser loads an HTML file:
+1. It parses the HTML.
+2. It converts it into a structured tree.
+3. That tree is called the DOM.
+4. JavaScript can access and modify that tree.
+
+Important:
+The DOM is NOT HTML.
+The DOM is a JavaScript representation of HTML.
+-->
+
+
+
+
+<!-- ================= 1. How Browser Converts HTML to DOM ================= -->
+
+<!-- Example HTML -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOM Introduction</title>
+</head>
+
+<body>
+    <div id="box" class="container">Hello DOM</div>
+</body>
+
+</html>
+
+
+
+
+<!--
+Browser builds this tree internally:
+
+Document
+ └── html
+     ├── head
+     │    └── title
+     └── body
+          ├── h1
+          └── p
+
+This tree structure is the DOM.
+
+Every tag becomes a NODE.
+-->
+
+
+
+
+
+
+<!-- =========================== 2. What is a Node? =========================== -->
+
+<!--
+Everything in DOM is a Node.
+
+Types of nodes:
+- Document node
+- Element node (<div>, <p>, <h1>)
+- Text node (text inside elements)
+- Attribute node (class, id, etc.)
+- Comment node
+
+Example:
+<p id="demo">Hello</p>
+
+- <p> → Element node
+- id="demo" → Attribute node
+- "Hello" → Text node
+-->
+
+
+
+
+
+<!-- =========================== 3. Why DOM Exists =========================== -->
+
+<!--
+DOM allows JavaScript to:
+
+- Select elements
+- Modify content
+- Change styles
+- Add/remove elements
+- Handle events (click, input, etc.)
+
+Without DOM → JavaScript cannot interact with page content.
+-->
+
+
+
+
+
+
+<!-- ================= 4. Accessing DOM with JavaScript ================= -->
+
+<script>
+    // document represents the entire HTML document
+
+    console.log(document);
+
+    // Access body
+    console.log(document.body);
+
+    // Access title
+    console.log(document.title);
+</script>
+
+<!--
+document is the root object of DOM.
+
+Everything starts from document.
+-->
+
+
+
+
+
+<!-- ================= 5. Selecting Elements ================= -->
+
+
+<script>
+    // Select by ID
+    let element = document.getElementById("box");
+
+    // Select by class
+    let elements = document.getElementsByClassName("container");
+
+    // Modern way (recommended)
+    let el = document.querySelector("#box");
+    let all = document.querySelectorAll(".container");
+
+    console.log("element : ", element);
+    console.log("elements : ", elements);
+    console.log("el : ", el);
+    console.log("all : ", all);
+</script>
+
+<!--
+getElementById → returns single element
+querySelector → returns first match
+querySelectorAll → returns NodeList
+-->
+
+
+
+
+
+
+<!-- ================= 6. Modifying Content ================= -->
+
+<script>
+    let box = document.querySelector("#box");
+
+    // Change text
+    box.textContent = "Updated Text";
+
+    // Change HTML
+    box.innerHTML = "<strong>Bold Text</strong>";
+
+
+</script>
+
+<!--
+textContent → safer, only text
+innerHTML → parses HTML
+-->
+
+
+
+
+
+
+<!-- ================= 7. Changing Styles ================= -->
+
+<script>
+    box.style.color = "red";
+    box.style.backgroundColor = "yellow";
+</script>
+
+<!--
+DOM allows direct CSS manipulation. (considered as inline css). Be Carefull!
+-->
+
+
+<!-- ================= 8. Creating & Adding Elements ================= -->
+
+<script>
+    let newEl = document.createElement("p");
+    newEl.textContent = "hello i am new paragraph!";
+
+    let newEl2 = document.createElement("strong");
+    newEl2.textContent = "hello i am new strong!";
+
+    document.body.appendChild(newEl);
+    document.body.appendChild(newEl2);
+</script>
+<!--
+createElement → creates node
+appendChild → adds to DOM tree
+-->
+
+
+
+
+
+
+
+<!-- ================= 9. DOM is Live & Dynamic ================= -->
+
+<!--
+If you modify DOM:
+- Browser updates page immediately.
+- It is dynamic.
+- No page reload required.
+
+This is how interactive websites work.
+-->
+
+
+
+
+
+
+<!-- ================= 10. Important Notes ================= -->
+
+<!--
+- DOM is built when page loads.
+- JavaScript interacts with DOM via "document".
+- Every HTML element becomes an object.
+- DOM is a tree structure.
+- Changes in DOM = visible changes in browser.
+- DOM manipulation is slower than pure JS operations.
+- Always wait for DOM to load before accessing elements.
+-->
+
+
+
+
+
+<!-- ================= 11. DOMContentLoaded Event ================= -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log(`Dom Loaded Successfully`);
+    })
+</script>
+
+<!--
+Ensures JS runs AFTER DOM is ready.
+Prevents null errors.
+-->
+
+
+
+
+
+
+<!-- ================= Summary ================= -->
+
+<!--
+DOM:
+- Tree representation of HTML
+- Controlled via JavaScript
+- Allows dynamic web pages
+- Root object = document
+- Nodes = elements, text, attributes
+- Core for frontend development
+-->
