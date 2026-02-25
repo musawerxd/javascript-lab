@@ -1,0 +1,308 @@
+<!-- JS DOM introduction notes 02/25/2026 -->
+
+<!--
+DOM Selectors allow JavaScript to access HTML elements.
+
+Two major return types:
+1. NodeList
+2. HTMLCollection
+
+Understanding the difference is very important.
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selectors</title>
+    <style>
+        html {
+            background-color: #0f0f0f;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="parent">
+        <h1 id="inner" class="heading">DOM Selector</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum veritatis sit nesciunt hic explicabo quasi.
+            Veniam illo officiis ratione cupiditate.</p>
+    </div>
+</body>
+
+</html>
+
+
+
+
+<!-- ============================================================= -->
+<!-- 1. getElementById() -->
+<!-- ============================================================= -->
+
+<script>
+    let element = document.getElementById("box");
+    console.log(element);
+</script>
+<!--
+- Selects element by ID
+- Returns: SINGLE element
+- Fastest selector
+- ID must be unique
+-->
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 2. getElementsByClassName() -->
+<!-- ============================================================= -->
+
+<script>
+    let elements = document.getElementsByClassName("heading");
+    console.log(elements); // returns HTMLcollection
+</script>
+<!--
+- Selects elements by class name
+- Returns: HTMLCollection
+- LIVE collection (updates automatically if DOM changes)
+- Cannot use array methods directly (map, filter, etc.)... must convert to array first
+-->
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 3. getElementsByTagName() -->
+<!-- ============================================================= -->
+<script>
+    let paragraphs = document.getElementsByTagName('p');
+    console.log(paragraphs); // returns HTMLcollection
+</script>
+<!--
+- Selects by tag name
+- Returns: HTMLCollection
+- LIVE collection
+-->
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 4. querySelector() -->
+<!-- ============================================================= -->
+
+
+<script>
+
+    let parent = document.querySelector(".parent")
+    console.log(parent)
+    // can work with anything 
+    let parentWithId = document.querySelector("#box")
+    console.log(parentWithId)
+
+    let parentWithTag = document.querySelector("div")
+    console.log(parentWithTag)
+
+</script>
+<!--
+- Selects first matching element
+- Uses CSS selectors
+- Returns: SINGLE element
+- Modern & flexible
+-->
+
+
+
+
+<!-- ============================================================= -->
+<!-- 5. querySelectorAll() -->
+<!-- ============================================================= -->
+
+<script>
+    let allh1 = document.querySelectorAll('h1');
+    console.log(allh1);
+</script>
+<!--
+- Selects ALL matching elements
+- Uses CSS selectors
+- Returns: NodeList
+- NOT live (static snapshot)
+-->
+
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- ================= NodeList Explained ================= -->
+<!-- ============================================================= -->
+
+
+<script>
+    let nodes = document.querySelectorAll('div');
+    console.log(nodes);
+</script>
+<!--
+NodeList:
+- Returned by querySelectorAll()
+- Can contain element nodes
+- Static (does NOT auto-update when DOM changes)
+- Has forEach()
+- Does NOT have map/filter (must convert to array)
+-->
+
+<script>
+    // Convert NodeList to array
+    let array = Array.from(nodes);
+    array.map(el => console.log(el.textContent, "\n"));
+</script>
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- ================= HTMLCollection Explained ================= -->
+<!-- ============================================================= -->
+
+<script>
+    let h1 = document.getElementsByClassName("heading")
+    console.log('h1 : ', h1)
+</script>
+
+<!--
+HTMLCollection:
+- Returned by getElementsByClassName() and getElementsByTagName()
+- Contains ONLY element nodes
+- LIVE (auto-updates when DOM changes)
+- No forEach()
+- No map/filter
+-->
+
+<script>
+    // Convert HTMLCollection to array
+    Array.from(h1).forEach(element => {
+        console.log(element);
+    });
+</script>
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- ================= NodeList vs HTMLCollection ================= -->
+<!-- ============================================================= -->
+
+
+<!--
+NodeList:
+- Static (querySelectorAll)
+- Has forEach()
+- More modern usage
+
+HTMLCollection:
+- Live
+- No forEach()
+- Older DOM methods
+- eats memory
+-->
+
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 6. Difference: Live vs Static -->
+<!-- ============================================================= -->
+
+<ul id="list">
+    <li class="item">One</li>
+</ul>
+
+<script>
+    let LiveCollection = document.getElementsByClassName("item");
+    let StaticNode = document.querySelectorAll(".item")
+
+    //Add new Element
+    function addLi(text) {
+        let list = document.getElementById("list")
+        let newli = document.createElement("li");
+        newli.setAttribute("class", "item");
+        newli.innerText = text;
+        list.appendChild(newli)
+    }
+    addLi("three");
+
+    console.log(LiveCollection.length); // 2 (auto update)
+    console.log(StaticNode.length); // 1 (unchanged)
+</script>
+
+<!--
+LIVE = updates automatically ---- same as reference 
+STATIC = snapshot at time of selection ---- same as copy (static)
+-->
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 7. Looping Through NodeList & HTMLCollection -->
+<!-- ============================================================= -->
+
+<script>
+    //NodeList
+    document.querySelectorAll('.item').forEach((val) => {
+        console.log(val);
+    })
+
+    //HTMLCollection
+    let items = document.getElementsByClassName("item");
+
+    for (let i = 0; i < items.length; i++) {
+        console.log(items[i]);
+    }
+</script>
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- ================= Important Notes ================= -->
+<!-- ============================================================= -->
+
+<!--
+1. Prefer querySelector / querySelectorAll in modern projects.
+2. Avoid relying on live collections (can cause bugs).
+3. Always convert to array if using map/filter/reduce.
+4. NodeList ≠ Array.
+5. HTMLCollection ≠ Array.
+6. getElementById is fastest.
+7. querySelector is most flexible.
+-->
