@@ -1,0 +1,385 @@
+<!-- JS DOM introduction notes 02/26/2026 -->
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- ================= DOM MANIPULATION COMPLETE ================= -->
+<!-- ============================================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulation</title>
+    <style>
+        html {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<!--
+This covers:
+- Creating elements
+- Adding elements
+- Removing elements
+- Replacing elements
+- Manipulating content
+- Parent / Child relationships
+- Important notes
+
+DOM = Tree structure
+Everything revolves around parent and child nodes.
+-->
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 1. Basic HTML Structure -->
+<!-- ============================================================= -->
+<div id="container">
+    <p class="item">ITEM 1</p>
+    <p class="item">ITEM 2</p>
+</div>
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 2. Creating New Element -->
+<!-- ============================================================= -->
+
+<script>
+    let newElemet = document.createElement("p");
+    newElemet.setAttribute("class", "item");
+    text = document.createTextNode("ITEM 3")
+    newElemet.appendChild(text);
+</script>
+<!--
+createElement() → creates element in memory
+It is NOT visible until added to DOM
+-->
+
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 3. Adding Elements -->
+<!-- ============================================================= -->
+
+<script>
+    let parent = document.getElementById("container");
+
+    /* Add as last child */
+
+    // parent.appendChild(newElemet);
+    /* Modern ways */
+    // parent.append(newElemet)
+
+    /* Add at beginning */
+    // parent.prepend(newElemet)
+
+
+    /* Insert before specific element */
+    parent.insertBefore(newElemet, document.querySelectorAll(".item")[1])
+</script>
+<!--
+appendChild() → adds as last child
+append() → can add text or elements
+prepend() → adds as first child
+insertBefore(newNode, referenceNode)
+-->
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 4. Removing Elements -->
+<!-- ============================================================= -->
+
+
+<script>
+    let item = document.querySelectorAll('.item')[0];
+
+    /* Modern way */
+    item.remove();
+
+    /* Old way */
+    parent.removeChild(item);
+</script>
+<!--
+remove() → simplest modern method
+removeChild() → requires parent reference
+-->
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 5. Replacing Elements -->
+<!-- ============================================================= -->
+
+<script>
+    let oldElement = document.querySelector(".item");
+    let replace = document.createElement("h2");
+
+    replace.textContent = "replaced!!!!";
+
+    parent.replaceChild(replace, oldElement);
+</script>
+
+<!--
+replaceChild(newNode, oldNode)
+-->
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 6. Manipulating Content -->
+<!-- ============================================================= -->
+
+<h1 id="newh1">
+    New h1
+</h1>
+
+<script>
+
+    let el = document.getElementById("newh1");
+
+    /* Change text */
+    el.textContent = "changed by textContent";
+
+    /* Change text also that is hidden */
+    el.innerText = "changed by innerText";
+
+    /* Change HTML */
+    el.innerHTML = "changed by <strong><u>innerHTML</u></strong>";
+
+
+    /* Change attributes */
+    el.setAttribute("data-role", "random h1");
+
+    /* Access attributes */
+    console.log(el.getAttribute("id"));
+
+    /* remove attributes */
+    el.removeAttribute("data-role");
+
+
+    // Change Styles
+    el.style.backgroundColor = "#0f0f0f"
+    el.style.padding = "15px";
+    el.style.borderRadius = "20px"
+
+</script>
+
+<!--
+textContent → safer
+innerHTML → parses HTML (can cause security risk if not careful)
+-->
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 7. Parent Child Relation -->
+<!-- ============================================================= -->
+
+<div class="parent">
+    <p class="child">first child</p>
+    <p class="child">second child</p>
+    <p class="child">last child</p>
+</div>
+
+<script>
+
+    let child = document.querySelector(".child")
+    let parant = document.querySelector(".parent")
+    // parent
+    console.log(child.parentElement);
+
+    // child
+    console.log(parant.children);
+
+    //first child
+    console.log(parant.firstElementChild);
+
+    //last child
+    console.log(parant.lastElementChild);
+
+    //next sibling
+    console.log(child.nextElementSibling);
+
+    //prevoius sibling
+    let last = parant.lastElementChild;
+    console.log(last.previousElementSibling);
+
+
+</script>
+<!--
+Important:
+parentNode vs parentElement
+children → only elements
+childNodes → includes text nodes
+-->
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 8. Traversing the DOM -->
+<!-- ============================================================= -->
+<script>
+
+    for (let i = 0; i < parent.children.length; i++) {
+        console.log(parent.children[i].textContent);
+    }
+
+</script>
+
+<!--
+DOM Traversal = moving up, down, sideways in tree
+-->
+
+
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 9. Cloning Elements -->
+<!-- ============================================================= -->
+
+<script>
+
+    let orignal = document.querySelector(".parent");
+    let cloned = orignal.cloneNode(true);
+
+    document.body.append(cloned);
+</script>
+<!--
+cloneNode(false) → shallow
+cloneNode(true) → deep copy
+-->
+
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 10. Important Notes -->
+<!-- ============================================================= -->
+
+<!--
+1. DOM manipulation triggers reflow/repaint → expensive operation.
+2. Minimize repeated DOM access (store references in variables).
+3. Prefer modern methods: append, prepend, remove.
+4. Avoid excessive innerHTML (security risk: XSS).
+5. Understand tree structure before manipulating.
+6. Live collections update automatically.
+7. Always ensure element exists before manipulating.
+-->
+
+
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 11. DOM Tree Visualization Concept -->
+<!-- ============================================================= -->
+
+<!--
+<div id="container">
+    <p>Item 1</p>
+    <p>Item 2</p>
+</div>
+
+Tree:
+
+container
+ ├── p (Item 1)
+ └── p (Item 2)
+
+Every manipulation = modifying this tree.
+-->
+
+
+
+
+
+
+
+
+<!-- ============================================================= -->
+<!-- 12. Summary -->
+<!-- ============================================================= -->
+<!--
+Create:
+document.createElement()
+
+Add:
+appendChild()
+append()
+prepend()
+insertBefore()
+
+Remove:
+remove()
+removeChild()
+
+Replace:
+replaceChild()
+
+Manipulate:
+textContent
+innerHTML
+setAttribute
+style
+
+Navigate:
+parentElement
+children
+firstElementChild
+nextElementSibling
+-->
