@@ -39,19 +39,19 @@
         transition-duration: 1s;
     }
 
-    .red {
+    #red {
         background: red;
     }
 
-    .green {
+    #green {
         background: green;
     }
 
-    .yellow {
+    #yellow {
         background: yellow;
     }
 
-    .pink {
+    #pink {
         background: pink;
     }
 
@@ -67,10 +67,10 @@
 
 
     <div class="container">
-        <button class="color red"></button>
-        <button class="color green"></button>
-        <button class="color yellow"></button>
-        <button class="color pink"></button>
+        <button id="red" class="color "></button>
+        <button id="green" class="color "></button>
+        <button id="yellow" class="color "></button>
+        <button id="pink" class="color "></button>
     </div>
 
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ipsa atque, assumenda corrupti repudiandae soluta
@@ -82,30 +82,27 @@
 
 
     <script>
-        let body = document.querySelector(".body")
+        let body = document.body
 
-        let red = document.querySelector(".red");
-        red.addEventListener('click', () => {
-            body.style.backgroundColor = 'red';
-            console.log("red bg applied");
-        })
+        let buttons = document.querySelectorAll(".color")
+        console.log('buttons', buttons)
 
-        let green = document.querySelector(".green");
-        green.addEventListener('click', () => {
-            body.style.backgroundColor = "green";
-            console.log("green bg applied");
-        })
+        buttons.forEach((button) => {
 
-        let yellow = document.querySelector(".yellow");
-        yellow.addEventListener('click', () => {
-            body.style.backgroundColor = "yellow";
-            console.log("yellow bg applied");
-        })
-
-        let pink = document.querySelector(".pink");
-        pink.addEventListener('click', () => {
-            body.style.backgroundColor = "pink";
-            console.log("pink bg applied");
+            button.addEventListener('click', () => {
+                if (button.id === 'red') {
+                    body.style.backgroundColor = button.id
+                }
+                if (button.id === 'green') {
+                    body.style.backgroundColor = button.id
+                }
+                if (button.id === 'yellow') {
+                    body.style.backgroundColor = button.id
+                }
+                if (button.id === 'pink') {
+                    body.style.backgroundColor = button.id
+                }
+            })
         })
     </script>
 </body>

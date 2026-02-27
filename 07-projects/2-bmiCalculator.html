@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            background: #0f0f0f;
+            color: white;
+        }
+
+        h1 {
+            font-variant: small-caps;
+            text-align: center;
+        }
+
+        h2 {
+            padding: 20px 40px;
+
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .input {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        h3 {
+            background-color: #fff;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+
+        .result {
+            display: flex;
+        }
+
+        .result>h2 {
+            padding: 5px 9px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Created By Musawer</h1>
+    <h2>BMI Calculator</h2>
+
+    <form>
+        <div class="input">
+            <div>
+                <label for="height">Enter Height in centimeters : </label>
+                <input type="number" name="height" id="height">
+            </div>
+            <div>
+                <label for="weight">Enter Weight in Kg : </label>
+                <input type="number" name="height" id="weight">
+            </div>
+            <div>
+                <button id="cal">Calculate</button>
+            </div>
+            <div class="result">
+                <h2>Result:</h2>
+                <h3 id="result"></h3>
+            </div>
+        </div>
+    </form>
+
+    <h2>BMI Weight Categories</h2>
+    <p>Underweight: Below 18.5.</p>
+    <p>Healthy Weight: 18.5 -- 24.9.</p>
+    <p> Overweight: 25.0 -- 29.9.</p>
+    <p>Obese: 30.0 and above.</p>
+
+
+    <script>
+        // let calculate = document.getElementById("cal");
+
+        // calculate.addEventListener("click", () => {
+        //     let height = document.getElementById("height").value;
+        //     let weight = document.getElementById("weight").value;
+
+        //     height = Number(height);
+        //     weight = Number(weight);
+
+        //     let bmi = weight / ((height / 100) ** 2);
+
+        //     let category = '';
+
+        //     if (bmi < 18.5) {
+        //         category = 'underweight';
+        //     }
+        //     else if (bmi >= 18.5 && bmi <= 24.9) {
+        //         category = 'Healthy Weight';
+        //     }
+        //     else if (bmi >= 25.0 && bmi <= 29.9) {
+        //         category = 'Overweight';
+        //     }
+        //     else {
+        //         category = 'Obese';
+        //     }
+
+
+        //     alert(`BMI = ${bmi.toFixed(2)}\n Category : ${category}`);
+        // })
+
+        let form = document.querySelector("form")
+        console.log(form);
+
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let height = Number(document.getElementById("height").value);
+            let weight = Number(document.getElementById("weight").value);
+
+            let result = document.getElementById("result")
+
+            if (!height || !weight || height <= 0 || weight <= 0) {
+                result.innerText = "Invalid Input!"
+            }
+
+            else {
+                let bmi = weight / ((height / 100) ** 2);
+
+                let category = '';
+
+                if (bmi < 18.5) {
+                    category = 'underweight';
+                }
+                else if (bmi >= 18.5 && bmi <= 24.9) {
+                    category = 'Healthy Weight';
+                }
+                else if (bmi >= 25.0 && bmi <= 29.9) {
+                    category = 'Overweight';
+                }
+                else {
+                    category = 'Obese';
+                }
+
+                result.innerText = `BMI : ${bmi.toFixed(2)} Catergory: ${category}`
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
