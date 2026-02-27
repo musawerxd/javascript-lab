@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+</head>
+<style>
+    .body {
+        background: #0f0f0f;
+        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    #creater {
+        font-variant: small-caps;
+        text-align: center;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem;
+        gap: 2rem;
+    }
+
+    .color {
+        height: 50vh;
+        width: 50vw;
+        border: 1px solid black;
+        border-radius: 20px;
+    }
+
+    .color:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+        transition-duration: 1s;
+    }
+
+    .red {
+        background: red;
+    }
+
+    .green {
+        background: green;
+    }
+
+    .yellow {
+        background: yellow;
+    }
+
+    .pink {
+        background: pink;
+    }
+
+    p {
+        text-align: center;
+
+    }
+</style>
+
+<body class="body">
+
+    <h1 id="creater">Created by Musawer</h1>
+
+
+    <div class="container">
+        <button class="color red"></button>
+        <button class="color green"></button>
+        <button class="color yellow"></button>
+        <button class="color pink"></button>
+    </div>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ipsa atque, assumenda corrupti repudiandae soluta
+        officia blanditiis laudantium facilis voluptatibus, aut deleniti! Ad adipisci neque officia dignissimos quidem
+        nostrum quaerat rem voluptate qui unde doloribus labore, ipsam, quasi corporis? Veritatis aperiam esse aliquid
+        sed quis nemo, aspernatur voluptate. Officiis cupiditate commodi omnis consequuntur praesentium natus earum
+        voluptatibus rem nemo magnam!</p>
+
+
+
+    <script>
+        let body = document.querySelector(".body")
+
+        let red = document.querySelector(".red");
+        red.addEventListener('click', () => {
+            body.style.backgroundColor = 'red';
+            console.log("red bg applied");
+        })
+
+        let green = document.querySelector(".green");
+        green.addEventListener('click', () => {
+            body.style.backgroundColor = "green";
+            console.log("green bg applied");
+        })
+
+        let yellow = document.querySelector(".yellow");
+        yellow.addEventListener('click', () => {
+            body.style.backgroundColor = "yellow";
+            console.log("yellow bg applied");
+        })
+
+        let pink = document.querySelector(".pink");
+        pink.addEventListener('click', () => {
+            body.style.backgroundColor = "pink";
+            console.log("pink bg applied");
+        })
+    </script>
+</body>
+
+
+
+</html>
