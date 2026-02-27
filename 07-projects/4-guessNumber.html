@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <style>
+        body {
+            background: #0f0f0f;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        h1 {
+            font-variant: small-caps;
+            text-align: center;
+
+        }
+
+        .instructions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input {
+            display: flex;
+            justify-content: center;
+        }
+
+        input {
+            height: 5vh;
+            width: 20vw;
+            border: none;
+            border-radius: 10px;
+            padding: 0 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+            transition: 0.4s;
+            cursor: pointer;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+        }
+
+        .attempts {
+            display: flex;
+            justify-content: center;
+        }
+
+        h3 {
+            color: Red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Created by Musawer</h1>
+
+    <div class="instructions">
+        <p>Try and Gues a Random Number Between 1---100</p>
+        <p>You have 10 attempts to guess the right Number </p>
+    </div>
+    <div class="input">
+        <input type="number" name="number" id="userGuess">
+    </div>
+    <div class="button">
+        <button id="submit">Submit</button>
+    </div>
+    <div class="attempts">
+        <h3 id="remaining"></h3>
+    </div>
+
+    <script>
+        let remaining = document.getElementById("remaining");
+
+        let button = document.getElementById("submit");
+
+        let RandomNumber = Math.floor((Math.random() * 100) + 1);
+        console.log('RandomNumber : ', RandomNumber)
+
+        let attempts = 10;
+        let counts = 1;
+        let gameOver = false;
+        button.addEventListener("click", () => {
+
+            let userGuess = Number(document.getElementById("userGuess").value);
+
+            if (gameOver) {
+                return;
+            }
+
+            if (!userGuess || userGuess > 100 || userGuess <= 0) {
+                remaining.innerText = `Please Enter a Number between 1 to 100`;
+                return;
+            }
+            if (userGuess === RandomNumber) {
+                remaining.innerText = `You Guessed it! in ${counts} Attempts`;
+                remaining.style.color = 'green';
+                gameOver = true;
+                return;
+            }
+            attempts--;
+            counts++;
+            remaining.innerText = `Wrong!! ${attempts} Remaining!`;
+            remaining.style.color = 'red';
+
+            if (attempts == 0) {
+                remaining.innerText = `You loose!`;
+                gameOver = true;
+                return;
+            }
+
+        })
+    </script>
+</body>
+
+</html>
