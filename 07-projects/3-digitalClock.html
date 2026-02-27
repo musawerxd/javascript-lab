@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            background: #0f0f0f;
+            color: white;
+        }
+
+        h1 {
+            font-variant: small-caps;
+            text-align: center;
+        }
+
+        .clock {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Created by Musawer</h1>
+
+
+    <div class="clock">
+        <span id="hour">12</span>
+        <span> : </span>
+        <span id="minutes">12</span>
+        <span> : </span>
+        <span id="seconds">12</span>
+    </div>
+
+
+
+
+    <script>
+
+        let hour = document.getElementById("hour");
+        let minutes = document.getElementById("minutes");
+        let seconds = document.getElementById("seconds");
+
+        setInterval(() => {
+            let date = new Date();
+
+            let nowHours = date.getHours();
+            let nowMinutes = date.getMinutes();
+            let nowSeconds = date.getSeconds();
+
+            hour.innerText = nowHours;
+            minutes.innerText = nowMinutes;
+            seconds.innerText = nowSeconds;
+        }, 1000);
+    </script>
+</body>
+
+</html>
