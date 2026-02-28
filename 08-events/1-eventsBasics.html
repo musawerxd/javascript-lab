@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+    <style>
+        img:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body style="background-color: #0f0f0f; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images"
+            style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center; text-align: center;">
+            <li><img width="300px" id="photoshop"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop"></li>
+            <li><img width="300px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="300px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="300px" id="owl"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="300px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
+
+
+
+<!-- ====================================================== -->
+<!-- 1. Selecting Elements -->
+<!-- ====================================================== -->
+
+<script>
+    const ul = document.getElementById("images");
+    const owl = document.getElementById("owl")
+    const google = document.getElementById("google");
+
+    // console.log(ul);
+    // console.log(owl);
+    // console.log(google);
+</script>
+
+
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 2. Basic click event -->
+<!-- ====================================================== -->
+
+
+<script>
+    // // When owl image is clicked → runs callback
+
+    // owl.addEventListener("click", (event) => {
+    //     console.log("Owl Clicked");
+    // })
+
+    // // Flow:
+    // // user click → browser detects → event created → callback executed
+
+</script>
+
+
+
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 3. Event Object -->
+<!-- ====================================================== -->
+
+<script>
+
+    // owl.addEventListener("click", (event) => {
+    //     console.log(event);
+    //     // console.log(event.type); // click
+    //     // console.log(event.target); // exact element clicked
+    //     // console.log(event.target.tagName); // exact element clicked --> IMG
+    //     // console.log(event.currentTarget); // element listener attached to
+
+    // })
+
+</script>
+
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 4. Events on Parent Element -->
+<!-- ====================================================== -->
+
+<!-- <script>
+
+    ul.addEventListener("click", (event) => {
+        console.log("ul clicked ");
+        console.log("Target : ", event.target);
+    })
+
+    // Important:
+    // event.target → actual clicked element
+    // event.currentTarget → element listener attached
+</script> -->
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 5. Removing Elements on Click -->
+<!-- ====================================================== -->
+
+<!-- <script>
+    ul.addEventListener("click", (event) => {
+        if (event.target.tagName === "IMG") {
+            event.target.remove();
+        }
+    })
+
+    // Explanation:
+    // event.target → clicked IMG
+    // remove() → removes element from DOM
+
+</script> -->
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 6. Prevent Default Behavior -->
+<!-- ====================================================== -->
+
+<!-- <script>
+    google.addEventListener("click", (event) => {
+        event.preventDefault();
+        console.log("prevented Default Google");
+    })
+
+    // preventDefault() stops the default browser behavior.
+</script> -->
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 7. Event Bubbling -->
+<!-- ====================================================== -->
+
+<script>
+
+    //Listener on IMG
+    // owl.addEventListener("click", () => {
+    //     console.log("Owl Clicked!");
+    // })
+
+    // //Listener on ul
+    // ul.addEventListener("click", () => {
+    //     console.log("ul Clicked!");
+    // })
+
+    // When owl clicked → OUTPUT:
+
+    // Owl clicked
+    // UL clicked
+
+
+    // Why?
+    // Event bubbles upward
+
+</script>
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 8. stopPropagation() -->
+<!-- ====================================================== -->
+
+
+<script>
+    //Listener on IMG
+    owl.addEventListener("click", (event) => {
+        console.log("Owl Clicked!");
+        event.stopPropagation();
+    })
+
+    //Listener on ul
+    ul.addEventListener("click", () => {
+        console.log("ul Clicked!");
+    })
+
+    // Now UL listener will NOT run 
+    // Remember to call stopPropagation() at the source to prevent the event from bubbling upwards.
+</script>
+
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 9. Professional pattern -->
+<!-- ====================================================== -->
+
+<script>
+    //one listener handles all the images
+
+    ul.addEventListener("click", (event) => {
+        if (event.target.tagName === "IMG") {
+            console.log(`clicked ${event.target.id}\n`);
+        }
+    })
+    // Benefits:
+    // efficient
+    // scalable
+    // used in real apps
+</script>
+
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 10. Important Notes -->
+<!-- ====================================================== -->
+<script>
+    // event.target → actual clicked element
+    // event.currentTarget → element listener attached
+    // preventDefault() → stops default behavior
+    // stopPropagation() → stops bubbling
+    // event delegation → best practice
+</script>
