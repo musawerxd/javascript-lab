@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Object Properties</title>
+    <style>
+        body {
+            background: #0f0f0f;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #box {
+            width: 400px;
+            height: 200px;
+            background-color: crimson;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">Click, Move mouse, or Press keys here</div>
+</body>
+
+</html>
+
+
+<!-- ====================================================== -->
+<!-- 1. Selecting Element -->
+<!-- ====================================================== -->
+
+<script>
+    const box = document.getElementById("box");
+
+    //Make box Focusable to recieve keyboard Events
+    box.setAttribute("tabindex", "0");
+</script>
+
+
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 2. type Property -->
+<!-- ====================================================== -->
+
+<script>
+
+    // box.addEventListener("click", (event) => {
+    //     console.log(event.type);
+    // })
+
+    /*
+    Explanation:
+
+    event.type returns the name of the event.
+
+    Example outputs:
+    click
+    mousemove
+    keydown
+
+    Internal behavior:
+    Browser assigns type when creating event object.
+    */
+</script>
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 3. timeStamp Property -->
+<!-- ====================================================== -->
+
+<script>
+    // box.addEventListener("click", (event) => {
+    //     console.log(event.timeStamp);
+    // })
+    /*
+      Explanation:
+  
+      Returns time (milliseconds) since page loaded.
+  
+      Used for:
+      performance measurement
+      event timing analysis
+      */
+
+</script>
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 4. defaultPrevented Property -->
+<!-- ====================================================== -->
+
+<script>
+
+    // box.addEventListener("click", (event) => {
+    //     event.preventDefault();
+    //     console.log((event.defaultPrevented));
+    // })
+    /*
+   Explanation:
+
+   Returns true if preventDefault() was called.
+
+   true  → default prevented
+   false → default allowed
+   */
+</script>
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 5. target Property -->
+<!-- ====================================================== -->
+
+<script>
+    // box.addEventListener("click", (event) => {
+    //     console.log(event.target);
+    // })
+    /*
+    Explanation:
+
+    Returns actual element clicked.
+
+    Most important property for event delegation.
+    */
+</script>
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 6. currentTarget Property -->
+<!-- ====================================================== -->
+<script>
+    // box.addEventListener("click", (event) => {
+    //     console.log(event.currentTarget);
+    // })
+    /*
+   Explanation:
+
+   Element where listener is attached.
+
+   target != currentTarget possible.
+   */
+</script>
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 7. srcElement Property (Legacy) -->
+<!-- ====================================================== -->
+
+<script>
+
+    // box.addEventListener("click", (event) => {
+    //     console.log(event.srcElement);
+    // })
+    /*
+    Explanation:
+
+    Same as target.
+
+    Legacy property from older browsers.
+    Use target instead.
+    */
+</script>
+
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 8. toElement Property -->
+<!-- ====================================================== -->
+
+<script>
+
+    //for mouse
+
+    // box.addEventListener("mouseout", (event) => {
+    //     console.log(event.toElement);
+    // })
+    /*
+    Explanation:
+
+    Element mouse moved TO.
+
+    Used in mouseout/mouseover events.
+    */
+</script>
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 9. clientX and clientY -->
+<!-- ====================================================== -->
+<script>
+
+    // for mouse
+
+    // box.addEventListener("mousemove", (event) => {
+    //     console.log(event.clientX, " , ", event.clientY);
+    // })
+    /*
+   Explanation:
+
+   Mouse position relative to browser window.
+   */
+</script>
+
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 10. screenX and screenY -->
+<!-- ====================================================== -->
+
+<script>
+
+    // box.addEventListener("mousemove", (event) => {
+    //     console.log(event.screenX, " , ", event.screenY);
+    // })
+
+    /*
+    Explanation:
+
+    Mouse position relative to physical screen.
+    */
+</script>
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 11. altKey, ctrlKey, shiftKey -->
+<!-- ====================================================== -->
+<script>
+
+    box.addEventListener("click", (event) => {
+        console.log(event.altKey);
+        console.log(event.ctrlKey);
+        console.log(event.shiftKey);
+    })
+    /*
+       Explanation:
+   
+       Returns true if key held during event.
+   
+       Used in shortcuts.
+   
+       Example:
+       Ctrl + Click
+       Shift + Click
+       */
+</script>
+
+
+
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- 12. keyCode Property -->
+<!-- ====================================================== -->
+
+
+<script>
+
+    // box.addEventListener("keydown", (event) => {
+    //     console.log(event.keyCode); //depriciated
+    //     console.log(event.key); // recomended
+    // })
+
+    /*
+    Explanation:
+
+    Numeric code of key pressed.
+
+    Example:
+    Enter = 13
+    A = 65
+
+    IMPORTANT:
+
+    keyCode is deprecated.
+
+    Use event.key instead.
+    */
+</script>
+
+
+
+
+<!-- ====================================================== -->
+<!--  SUMMARY -->
+<!-- ====================================================== -->
+<script>
+
+    /*
+    Core Event Properties:
+
+    event.type
+    event.timeStamp
+    event.defaultPrevented
+    event.target
+    event.currentTarget
+    event.srcElement
+    event.toElement
+
+    Mouse Position:
+
+    event.clientX
+    event.clientY
+    event.screenX
+    event.screenY
+
+    Keyboard Modifiers:
+
+    event.altKey
+    event.ctrlKey
+    event.shiftKey
+
+    Keyboard Code:
+
+    event.keyCode (deprecated)
+    event.key (recommended)
+
+
+    Internal Working:
+
+    Browser creates event object
+    → assigns properties
+    → passes to listener
+    → listener accesses properties
+
+    */
+</script>
