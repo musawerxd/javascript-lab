@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+
+        th,
+        td {
+            border: 1px solid white;
+            padding: 10px;
+            height: 30px;
+            width: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Press any key</h1>
+    <table id="table"></table>
+</body>
+
+
+
+<script>
+
+    window.addEventListener("keydown", (event) => {
+
+        let table = document.getElementById("table");
+
+        table.innerHTML = `
+        <caption>Pressed Key info</caption>
+            <tr>
+              <th>Key</th>
+              <th>keycode</th>
+            </tr>
+            <tr>
+              <td>${event.key === " " ? "space" : event.key}</td>
+              <td>${event.keyCode}</td>
+            </tr>
+        `;
+        document.body.append(table)
+    })
+</script>
+
+</html>
