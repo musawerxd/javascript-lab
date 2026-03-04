@@ -198,3 +198,14 @@ fetchMulltiple()
 // ↓
 // You parse body
 //
+
+
+
+
+// need to cover: 
+
+// fetch options
+// AbortController 
+// Timeouts 
+// Streaming responses 
+// Cache control 
