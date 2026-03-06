@@ -1,7 +1,3 @@
-// OOP in JS , part of oop, why opp in js , constructor in oop, proto in oop, classes , instance , tthis , new , in oop 4 piiler in oop in js , in strucuter correct way , each thing with explanation and notes
-
-
-
 
 // ================= JavaScript: OOP Basics =================
 
