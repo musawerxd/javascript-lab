@@ -1,5 +1,5 @@
 // =============================
-// super Keyword & Static Properties in JavaScript
+// super Keyword  in JavaScript
 // =============================
 
 
